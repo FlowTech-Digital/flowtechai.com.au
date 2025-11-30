@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowTech AI | Enterprise Multi-Agent Automation Platform</title>
+    <meta name="description" content="Transform your enterprise with FlowTech AI's premium multi-agent platform. Twelve specialized AI agents orchestrating intelligence and automating excellence.">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    
+    <!-- Google Analytics 4 - PLACEHOLDER: Update with actual GA4 property -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    
+    <style>
+        :root {
+            --primary: #0066FF;
+            --primary-dark: #0052CC;
+            --secondary: #00D4AA;
+            --dark: #0A1628;
+            --darker: #050D1A;
+            --light: #F8FAFC;
+            --gray: #64748B;
+            --gradient: linear-gradient(135deg, #0066FF 0%, #00D4AA 100%);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(5, 13, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--light);
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .logo-text { font-size: 20px; font-weight: 700; }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover { color: var(--light); }
+        
+        .nav-cta {
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+        
+        .nav-cta:hover { background: var(--primary-dark); }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background: radial-gradient(ellipse at top, rgba(0,102,255,0.15) 0%, transparent 60%);
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0,102,255,0.1);
+            border: 1px solid rgba(0,102,255,0.3);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 13px;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+        
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #fff 0%, #94A3B8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 32px;
+            max-width: 500px;
+        }
+        
+        .hero-buttons { display: flex; gap: 16px; }
+        
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0,102,255,0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--light);
+            padding: 16px 32px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: border-color 0.2s;
+        }
+        
+        .btn-secondary:hover { border-color: var(--primary); }
+        
+        .agent-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        
+        .agent-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        
+        .agent-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+        }
+        
+        .agent-icon { font-size: 28px; margin-bottom: 8px; }
+        .agent-code { font-size: 12px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+        .agent-name { font-size: 11px; color: var(--gray); }
+        
+        .stats {
+            padding: 80px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+        
+        .stat-item { text-align: center; }
+        
+        .stat-value {
+            font-size: 48px;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-label { font-size: 14px; color: var(--gray); margin-top: 8px; }
+        
+        .features { padding: 120px 0; }
+        
+        .section-header { text-align: center; margin-bottom: 60px; }
+        
+        .section-badge {
+            display: inline-block;
+            background: rgba(0,212,170,0.1);
+            border: 1px solid rgba(0,212,170,0.3);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        
+        .section-header h2 { font-size: 40px; font-weight: 700; margin-bottom: 16px; }
+        .section-header p { color: var(--gray); font-size: 18px; max-width: 600px; margin: 0 auto; }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        .feature-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 32px;
+            transition: border-color 0.3s;
+        }
+        
+        .feature-card:hover { border-color: var(--primary); }
+        
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(0,102,255,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 { font-size: 20px; margin-bottom: 12px; }
+        .feature-card p { color: var(--gray); font-size: 14px; line-height: 1.7; }
+        
+        .contact {
+            padding: 120px 0;
+            background: radial-gradient(ellipse at bottom, rgba(0,102,255,0.1) 0%, transparent 60%);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        
+        .contact-info h2 { font-size: 36px; margin-bottom: 16px; }
+        .contact-info > p { color: var(--gray); margin-bottom: 40px; }
+        
+        .contact-item { display: flex; gap: 16px; margin-bottom: 24px; }
+        
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(0,102,255,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .contact-item h4 { font-size: 14px; margin-bottom: 4px; }
+        .contact-item p, .contact-item a { color: var(--gray); font-size: 14px; text-decoration: none; }
+        .contact-item a:hover { color: var(--primary); }
+        
+        .contact-form {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 24px;
+            padding: 40px;
+        }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 8px; color: var(--gray); }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 14px 16px;
+            font-size: 14px;
+            color: var(--light);
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus { outline: none; border-color: var(--primary); }
+        
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        
+        .form-submit {
+            width: 100%;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .form-submit:hover { transform: translateY(-2px); }
+        
+        footer {
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-brand p { color: var(--gray); font-size: 14px; margin-top: 16px; max-width: 280px; }
+        .footer-links h4 { font-size: 14px; font-weight: 600; margin-bottom: 20px; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--gray); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--light); }
+        
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .footer-bottom p { color: var(--gray); font-size: 13px; }
+        
+        @media (max-width: 968px) {
+            .hero-content { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 36px; }
+            .agent-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .features-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .nav-links { display: none; }
+        }
+        
+        @media (max-width: 480px) {
+            .agent-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+            .agent-card { padding: 12px; }
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+            .stat-value { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">
+                <div class="logo-icon">F</div>
+                <span class="logo-text">FlowTech AI</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#agents">Agents</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="nav-cta">Get Started</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <span>✨</span>
+                        <span>Enterprise Multi-Agent Platform</span>
+                    </div>
+                    <h1>Orchestrating Intelligence, Automating Excellence</h1>
+                    <p>Transform your enterprise with FlowTech AI's premium multi-agent platform. Twelve specialized AI agents working in perfect harmony to drive growth, optimize operations, and ensure success.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn-primary">Schedule Consultation →</a>
+                        <a href="#features" class="btn-secondary">Learn More</a>
+                    </div>
+                </div>
+                <div class="hero-visual" id="agents">
+                    <div class="agent-grid">
+                        <div class="agent-card">
+                            <div class="agent-icon">🎯</div>
+                            <div class="agent-code">FTO-00</div>
+                            <div class="agent-name">Overseer</div>
+                        </div>
+                        <div class="agent-card">
+                            <div class="agent-icon">📊</div>
+                            <div class="agent-code">BIA-09</div>
+                            <div class="agent-name">Intelligence</div>
+                        </div>
+                        <div class="agent-card">
+                            <div class="agent-icon">🚀</div>
+                            <div class="agent-code">SAE-01</div>
+                            <div class="agent-name">Success</div>
+                        </div>
+                        <div class="agent-card">
+                            <div class="agent-icon">📈</div>
+                            <div class="agent-code">GSA-05</div>
+                            <div class="agent-name">Growth</div>
+                        </div>
+                        <div class="agent-card">
+                            <div class="agent-icon">🔧</div>
+                            <div class="agent-code">OME-04</div>
+                            <div class="agent-name">Operations</div>
+                        </div>
+                        <div class="agent-card">
+                            <div class="agent-icon">🔐</div>
+                            <div class="agent-code">SSA-02</div>
+                            <div class="agent-name">Security</div>
+                        </div>
+                        <div class="agent-card">
+                            <div class="agent-icon">🎨</div>
+                            <div class="agent-code">DCA-03</div>
+                            <div class="agent-name">Design</div>
+                        </div>
+                        <div class="agent-card">
+                            <div class="agent-icon">💻</div>
+                            <div class="agent-code">DM-08</div>
+                            <div class="agent-name">Developer</div>
+                        </div>
+                        <div class="agent-card">
+                            <div class="agent-icon">🔬</div>
+                            <div class="agent-code">RA-07</div>
+                            <div class="agent-name">Research</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">12</div>
+                    <div class="stat-label">Specialized AI Agents</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">99.9%</div>
+                    <div class="stat-label">Uptime SLA</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">24/7</div>
+                    <div class="stat-label">Autonomous Operations</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">SOC 2</div>
+                    <div class="stat-label">Type II Compliant</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Capabilities</div>
+                <h2>Why Enterprise Leaders Choose FlowTech</h2>
+                <p>Built for organizations that demand excellence in AI-powered automation</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Multi-Agent Orchestration</h3>
+                    <p>Twelve specialized AI agents working in perfect harmony, each optimized for specific business functions from growth strategy to security monitoring.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>24/7 Autonomous Operations</h3>
+                    <p>Your business never sleeps. Our agents continuously monitor, analyze, and execute critical tasks around the clock with zero human intervention.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>Enterprise Security</h3>
+                    <p>Bank-level encryption, continuous threat monitoring, and SOC 2 Type II compliance ensure your data remains protected at all times.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Business Intelligence</h3>
+                    <p>Transform raw data into actionable insights. Our BIA-09 agent delivers real-time analytics and predictive recommendations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Rapid Deployment</h3>
+                    <p>Deploy in days, not months. Seamless integration with your existing tech stack means minimal disruption to your operations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Custom Workflows</h3>
+                    <p>Tailor every agent's behavior to your unique business processes. Create custom automation sequences that match your operational needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Ready to Transform Your Enterprise?</h2>
+                    <p>Join leading organizations leveraging FlowTech AI to drive growth and operational excellence.</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <h4>Email</h4>
+                            <a href="mailto:hello@flowtechai.com.au">hello@flowtechai.com.au</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">🏢</div>
+                        <div>
+                            <h4>Headquarters</h4>
+                            <p>Sydney, NSW, Australia</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">🕐</div>
+                        <div>
+                            <h4>Business Hours</h4>
+                            <p>Mon - Fri: 9:00 AM - 6:00 PM AEST</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">🌏</div>
+                        <div>
+                            <h4>Service Area</h4>
+                            <p>Australia-wide &amp; Asia-Pacific</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form action="https://formspree.io/f/xpwaqjgk" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Business Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="you@company.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company</label>
+                            <input type="text" id="company" name="company" placeholder="Your organization">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">How can we help? *</label>
+                            <textarea id="message" name="message" required placeholder="Tell us about your automation needs..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Schedule Consultation →</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-icon">F</div>
+                        <span class="logo-text">FlowTech AI</span>
+                    </div>
+                    <p>Orchestrating Intelligence, Automating Excellence. Premium multi-agent automation for enterprises that demand results.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#agents">AI Agents</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#contact">About Us</a></li>
+                        <li><a href="#contact">Careers</a></li>
+                        <li><a href="#contact">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy.html">Privacy Policy</a></li>
+                        <li><a href="/terms.html">Terms of Service</a></li>
+                        <li><a href="#contact">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 FlowTech AI Pty Ltd. ABN 76 689 878 420. All rights reserved.</p>
+                <p>Made with ❤️ in Sydney, Australia 🇦🇺</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
