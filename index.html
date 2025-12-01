@@ -76,7 +76,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 24px;
+            padding: 16px 24px;
         }
         
         .logo {
@@ -87,8 +87,8 @@
             color: var(--light);
         }
         
-        .logo-img { height: 48px; width: auto; }
-        .logo-img-footer { height: 160px; width: auto; }
+        .logo-img { height: 120px; width: auto; }
+        .logo-img-footer { height: 200px; width: auto; }
         
         .logo-text { font-size: 20px; font-weight: 700; }
         
@@ -125,7 +125,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding-top: 80px;
+            padding-top: 140px;
             background: radial-gradient(ellipse at top, rgba(0,102,255,0.15) 0%, transparent 60%);
         }
         
@@ -405,12 +405,14 @@
         @media (max-width: 968px) {
             .hero-content { grid-template-columns: 1fr; }
             .hero h1 { font-size: 36px; }
+            .hero { padding-top: 120px; }
             .agent-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .features-grid { grid-template-columns: 1fr; }
             .contact-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr 1fr; }
             .nav-links { display: none; }
+            .logo-img { height: 80px; }
         }
         
         @media (max-width: 480px) {
@@ -418,6 +420,7 @@
             .agent-card { padding: 12px; }
             .stats-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
             .stat-value { font-size: 32px; }
+            .logo-img { height: 60px; }
         }
     </style>
 </head>
