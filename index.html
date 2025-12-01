@@ -88,7 +88,7 @@
         }
         
         .logo-img { height: 80px; width: auto; }
-        .logo-img-footer { height: 220px; width: auto; }
+        .logo-img-footer { height: 240px; width: auto; }
         
         .logo-text { font-size: 20px; font-weight: 700; }
         
@@ -374,21 +374,21 @@
         .form-submit:hover { transform: translateY(-2px); }
         
         footer {
-            padding: 60px 0 30px;
+            padding: 80px 0 40px;
             border-top: 1px solid rgba(255,255,255,0.05);
         }
         
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
+            gap: 60px;
+            margin-bottom: 60px;
         }
         
-        .footer-brand p { color: var(--gray); font-size: 14px; margin-top: 16px; max-width: 280px; }
-        .footer-links h4 { font-size: 14px; font-weight: 600; margin-bottom: 20px; }
+        .footer-brand p { color: var(--gray); font-size: 14px; margin-top: 20px; max-width: 300px; line-height: 1.7; }
+        .footer-links h4 { font-size: 15px; font-weight: 600; margin-bottom: 24px; color: var(--light); }
         .footer-links ul { list-style: none; }
-        .footer-links li { margin-bottom: 12px; }
+        .footer-links li { margin-bottom: 14px; }
         .footer-links a { color: var(--gray); text-decoration: none; font-size: 14px; transition: color 0.2s; }
         .footer-links a:hover { color: var(--light); }
         
@@ -396,7 +396,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 30px;
+            padding-top: 40px;
             border-top: 1px solid rgba(255,255,255,0.05);
         }
         
@@ -410,10 +410,11 @@
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .features-grid { grid-template-columns: 1fr; }
             .contact-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
             .nav-links { display: none; }
-            .logo-img { height: 60px; }
-            .logo-img-footer { height: 180px; }
+            .nav-cta { display: none; }
+            .logo-img { height: 55px; }
+            .logo-img-footer { height: 200px; }
         }
         
         @media (max-width: 480px) {
@@ -421,8 +422,10 @@
             .agent-card { padding: 12px; }
             .stats-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
             .stat-value { font-size: 32px; }
-            .logo-img { height: 50px; }
-            .logo-img-footer { height: 150px; }
+            .logo-img { height: 45px; }
+            .logo-img-footer { height: 160px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
         }
     </style>
 </head>
