@@ -88,7 +88,7 @@
         }
         
         .logo-img { height: 80px; width: auto; }
-        .logo-img-footer { height: 140px; width: auto; }
+        .logo-img-footer { height: 200px; width: auto; display: block; }
         
         .logo-text { font-size: 20px; font-weight: 700; }
         
@@ -393,9 +393,21 @@
             align-items: start;
         }
         
-        .footer-brand { display: flex; flex-direction: column; }
-        .footer-brand .logo { margin-bottom: 16px; }
-        .footer-brand p { color: var(--gray); font-size: 14px; max-width: 280px; line-height: 1.7; }
+        .footer-brand { 
+            display: flex; 
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .footer-brand .logo-img-footer { 
+            margin-bottom: 12px;
+        }
+        .footer-brand p { 
+            color: var(--gray); 
+            font-size: 14px; 
+            max-width: 320px; 
+            line-height: 1.7;
+            margin: 0;
+        }
         .footer-links h4 { font-size: 15px; font-weight: 600; margin-bottom: 20px; color: var(--light); }
         .footer-links ul { list-style: none; }
         .footer-links li { margin-bottom: 12px; }
@@ -425,7 +437,7 @@
             .nav-cta { display: none; }
             nav .container { justify-content: center; }
             .logo-img { height: 55px; }
-            .logo-img-footer { height: 120px; }
+            .logo-img-footer { height: 160px; }
         }
         
         @media (max-width: 480px) {
@@ -434,7 +446,7 @@
             .stats-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
             .stat-value { font-size: 32px; }
             .logo-img { height: 45px; }
-            .logo-img-footer { height: 100px; }
+            .logo-img-footer { height: 140px; }
             .footer-grid { grid-template-columns: 1fr; gap: 28px; }
             .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
             .footer-brand p { max-width: 100%; }
@@ -658,9 +670,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="#" class="logo">
-                        <img src="/assets/logo-footer.svg" alt="FlowTech AI" class="logo-img-footer">
-                    </a>
+                    <img src="/assets/logo-footer.svg" alt="FlowTech AI" class="logo-img-footer">
                     <p>Orchestrating Intelligence, Automating Excellence. Premium multi-agent automation for enterprises that demand results.</p>
                 </div>
                 <div class="footer-links">
