@@ -382,7 +382,7 @@
         
         .form-submit:hover { transform: translateY(-2px); }
         
-        /* FOOTER - Icon-only logo + nav columns in green box per VIN 2025-12-01 */
+        /* FOOTER - Bottom-aligned nav columns, shifted right per VIN 2025-12-01 */
         footer {
             padding: 32px 0 24px;
             border-top: 1px solid rgba(255,255,255,0.05);
@@ -390,10 +390,10 @@
         
         .footer-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            gap: 32px;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
             margin-bottom: 24px;
-            align-items: start;
+            align-items: end;
         }
         
         .footer-brand { 
@@ -411,9 +411,9 @@
             line-height: 1.7;
             margin: 0;
         }
-        /* Nav columns pushed down into green box area - 80px padding */
+        /* Nav columns bottom-aligned with tagline */
         .footer-links { 
-            padding-top: 80px;
+            padding-bottom: 0;
         }
         .footer-links h4 { font-size: 15px; font-weight: 600; margin-bottom: 16px; color: var(--light); }
         .footer-links ul { list-style: none; }
@@ -439,13 +439,12 @@
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .features-grid { grid-template-columns: 1fr; }
             .contact-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
             .nav-links { display: none; }
             .nav-cta { display: none; }
             nav .container { justify-content: center; }
             .logo-img { height: 55px; }
             .logo-img-footer { height: 100px; }
-            .footer-links { padding-top: 0; }
         }
         
         @media (max-width: 480px) {
@@ -459,7 +458,7 @@
             .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
             .footer-brand { align-items: center; text-align: center; }
             .footer-brand p { max-width: 100%; text-align: center; }
-            .footer-links { text-align: center; padding-top: 0; }
+            .footer-links { text-align: center; }
             .footer-links ul { display: flex; flex-direction: column; align-items: center; }
         }
     </style>
