@@ -88,7 +88,8 @@
         }
         
         .logo-img { height: 80px; width: auto; }
-        .logo-img-footer { height: 280px; width: auto; display: block; }
+        /* ICON-ONLY footer logo - square 512x512 */
+        .logo-img-footer { height: 140px; width: auto; display: block; }
         
         .logo-text { font-size: 20px; font-weight: 700; }
         
@@ -305,8 +306,9 @@
         .feature-card h3 { font-size: 20px; margin-bottom: 12px; }
         .feature-card p { color: var(--gray); font-size: 14px; line-height: 1.7; }
         
+        /* CONTACT - Reduced bottom padding per VIN annotations */
         .contact {
-            padding: 120px 0;
+            padding: 120px 0 60px;
             background: radial-gradient(ellipse at bottom, rgba(0,102,255,0.1) 0%, transparent 60%);
         }
         
@@ -380,18 +382,18 @@
         
         .form-submit:hover { transform: translateY(-2px); }
         
-        /* FOOTER - Updated per VIN annotations 2025-12-01 */
+        /* FOOTER - Icon-only logo + repositioned columns per VIN annotations 2025-12-01 */
         footer {
-            padding: 48px 0 32px;
+            padding: 32px 0 24px;
             border-top: 1px solid rgba(255,255,255,0.05);
         }
         
         .footer-grid {
             display: grid;
-            grid-template-columns: 1.8fr 1fr 1fr 1fr;
-            gap: 24px;
-            margin-bottom: 32px;
-            align-items: center;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 24px;
+            align-items: start;
         }
         
         .footer-brand { 
@@ -405,12 +407,13 @@
         .footer-brand p { 
             color: var(--gray); 
             font-size: 14px; 
-            max-width: 320px; 
+            max-width: 280px; 
             line-height: 1.7;
             margin: 0;
         }
+        /* Nav columns pushed down into green box area */
         .footer-links { 
-            padding-top: 20px;
+            padding-top: 40px;
         }
         .footer-links h4 { font-size: 15px; font-weight: 600; margin-bottom: 16px; color: var(--light); }
         .footer-links ul { list-style: none; }
@@ -422,7 +425,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 24px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.05);
         }
         
@@ -441,7 +444,8 @@
             .nav-cta { display: none; }
             nav .container { justify-content: center; }
             .logo-img { height: 55px; }
-            .logo-img-footer { height: 200px; }
+            .logo-img-footer { height: 100px; }
+            .footer-links { padding-top: 0; }
         }
         
         @media (max-width: 480px) {
@@ -450,7 +454,7 @@
             .stats-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
             .stat-value { font-size: 32px; }
             .logo-img { height: 45px; }
-            .logo-img-footer { height: 160px; margin: 0 auto 8px auto; }
+            .logo-img-footer { height: 80px; margin: 0 auto 8px auto; }
             .footer-grid { grid-template-columns: 1fr; gap: 24px; }
             .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
             .footer-brand { align-items: center; text-align: center; }
