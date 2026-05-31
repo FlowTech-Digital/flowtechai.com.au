@@ -1,0 +1,13 @@
+{
+  "name": "FlowTech AI",
+  "short_name": "FlowTech AI",
+  "description": "Intelligence Behind the System — the parent brand behind a family of focused divisions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B1114",
+  "theme_color": "#0B1114",
+  "icons": [
+    { "src": "/favicons/icon-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/favicons/icon-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

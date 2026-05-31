@@ -2,7 +2,7 @@ name: Deploy to CloudFlare Pages
 
 on:
   push:
-    branches: [main]
+    branches: ["**"]
   workflow_dispatch:
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy . --project-name=flowtechai-com-au --commit-dirty=true
+          command: pages deploy . --project-name=flowtechai-com-au --branch=${{ github.ref_name }} --commit-dirty=true
       
       - name: Deployment Summary
         run: |
@@ -29,4 +29,4 @@ jobs:
           echo "- **Branch:** ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Project:** flowtechai-com-au" >> $GITHUB_STEP_SUMMARY
-          echo "- **URL:** https://flowtechai.com.au" >> $GITHUB_STEP_SUMMARY
+          echo "- **URL:** ${{ github.ref_name == 'main' && 'https://flowtechai.com.au' || format('https://{0}.flowtechai-com-au.pages.dev', github.ref_name) }}" >> $GITHUB_STEP_SUMMARY
