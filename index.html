@@ -193,18 +193,6 @@
   .card:hover .clink{opacity:1}
   .clink.muted{color:var(--mist-faint);pointer-events:none}
 
-  .work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-  .work{
-    background:rgba(20,27,38,.4);border:1px solid var(--hair);border-radius:4px;padding:30px;
-    transition:transform .25s, border-color .25s;
-  }
-  .work:hover{transform:translateY(-4px);border-color:var(--hair-strong)}
-  .work .wname{font-family:var(--font-display);font-size:16px;letter-spacing:.05em;color:var(--white)}
-  .work .wmeta{color:var(--mist-dim);font-size:14.5px;margin-top:14px}
-  .work .wfoot{display:flex;align-items:center;justify-content:space-between;margin-top:24px}
-  .work-note{margin-top:26px;color:var(--mist-faint);font-size:13.5px}
-  .work-note a{color:var(--mist-dim);border-bottom:1px solid var(--hair-strong)}
-
   .intel{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
   .intel-points{margin-top:30px;display:flex;flex-direction:column;gap:18px}
   .ipoint{display:flex;gap:14px;align-items:flex-start}
@@ -267,7 +255,7 @@
     .foot-top{grid-template-columns:1fr 1fr;gap:30px}
   }
   @media(max-width:620px){
-    .grid,.work-grid{grid-template-columns:1fr}
+    .grid{grid-template-columns:1fr}
     .foot-top{grid-template-columns:1fr}
     section{padding:68px 0}
     .hero{padding:84px 0 72px}
@@ -287,7 +275,6 @@
     </a>
     <div class="navlinks">
       <a href="#divisions">Divisions</a>
-      <a href="#work">Work</a>
       <a href="#intelligence">Intelligence</a>
       <a class="nav-cta" href="#contact">Contact</a>
     </div>
@@ -354,34 +341,6 @@
 
   <hr class="divider">
 
-  <section id="work">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="eyebrow">Selected work</div>
-        <h2>Real businesses, live and running.</h2>
-        <p>Recent client work delivered through FlowTech Digital for trades and home-service businesses in the Hawkesbury, NSW.</p>
-      </div>
-      <div class="work-grid">
-
-        <a class="work reveal" href="https://ajexterior.com.au/" target="_blank" rel="noopener">
-          <div class="wname">A&amp;J Exterior</div>
-          <div class="wmeta">Chimney sweeping, fireplace installation and exterior cleaning. A full multi-page site with seven service pages, structured data and lead capture.</div>
-          <div class="wfoot"><span class="chip live">Delivered</span><span class="clink">View site&nbsp;→</span></div>
-        </a>
-
-        <a class="work reveal" href="https://grimefree.com.au/" target="_blank" rel="noopener">
-          <div class="wname">Grime Free</div>
-          <div class="wmeta">Exterior cleaning and chimney specialists, Hawkesbury NSW. Brand and website build, currently in production.</div>
-          <div class="wfoot"><span class="chip">In production</span><span class="clink">View site&nbsp;→</span></div>
-        </a>
-
-      </div>
-      <p class="work-note reveal">Delivered by <a href="https://flowtechdigital.com.au/" target="_blank" rel="noopener">FlowTech Digital</a> — the group's web and digital-presence division.</p>
-    </div>
-  </section>
-
-  <hr class="divider">
-
   <section id="intelligence">
     <div class="wrap">
       <div class="intel">
@@ -437,7 +396,6 @@
       </div>
       <div class="fcol">
         <h4>Company</h4>
-        <a href="#work">Work</a>
         <a href="#intelligence">Intelligence</a>
         <a href="#contact">Contact</a>
       </div>
