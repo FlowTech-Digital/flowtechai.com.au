@@ -99,8 +99,13 @@
 
   header{
     position:sticky; top:0; z-index:50;
-    background:rgba(11,17,20,.72); backdrop-filter:blur(14px);
+    background:transparent;
     border-bottom:1px solid var(--hair);
+  }
+  header::before{
+    content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+    background:rgba(11,17,20,.72);
+    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
   }
   nav{display:flex;align-items:center;justify-content:space-between;height:76px}
   .brand{display:flex;align-items:center;gap:13px}
@@ -257,8 +262,9 @@
   @media(max-width:860px){
     .nav-toggle{display:block}
     .navlinks{
-      display:none;position:fixed;top:76px;left:0;right:0;bottom:0;
-      background:rgba(11,17,20,.96);backdrop-filter:blur(16px);
+      display:none;position:fixed;top:var(--nav-h,77px);left:0;right:0;bottom:0;
+      background:rgba(11,17,20,.96);
+      backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
       flex-direction:column;align-items:center;justify-content:center;
       gap:36px;z-index:49;
     }
@@ -443,6 +449,9 @@
   items.forEach(el=>io.observe(el));
   const toggle=document.querySelector('.nav-toggle');
   const mlinks=document.querySelector('.navlinks');
+  const navEl=document.querySelector('header');
+  const setNavH=()=>document.documentElement.style.setProperty('--nav-h',navEl.offsetHeight+'px');
+  setNavH();window.addEventListener('resize',setNavH);
   if(toggle){
     toggle.addEventListener('click',()=>{
       const open=toggle.classList.toggle('open');
